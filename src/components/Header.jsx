@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import logo from '../assets/logo.svg'
 import { FaRegCircleUser } from "react-icons/fa6";
 import { MdOutlineLogout } from "react-icons/md";
@@ -32,7 +32,6 @@ const Header = () => {
                 <NavLink to="/" className={`hover:text-zinc-200 font-medium ${location.pathname === "/" && "text-zinc-200"} cursor-pointer transition-all`}>Create Image</NavLink>
                 <NavLink to="downloads" className={`hover:text-zinc-200 font-medium ${location.pathname === "/downloads" && "text-zinc-200"} cursor-pointer transition-all`} >Downloaded</NavLink>
                 <div className='flex items-center gap-8'>
-
                     {user ? (
                         <>
                             <NavLink to="/" className={`hover:text-zinc-200 font-medium ${location.pathname === "/login" && "text-zinc-200"} cursor-pointer transition-all flex gap-2 items-center`} > <Avatar email={user.email} defaultAvatar={"/avatar.svg"} size={22} />
