@@ -6,6 +6,8 @@ import Header from "./components/Header"
 import Login from "./components/Login"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Registration from "./components/Registration"
+import Reset from "./components/Reset"
+import PrivateRoute from "./components/PrivateRoute"
 
 
 function App() {
@@ -26,9 +28,12 @@ function App() {
 
         {/* <!-- Main Content --> */}
         <Routes>
-          <Route path="/" element={<CreateImage downloadedImages={downloadedImages} setDownloadedImages={setDownloadedImages} imageData={imageData} setImageData={setImageData} />} />
-          <Route path="/downloads" element={<Downloads downloadedImages={downloadedImages} />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/" element={<CreateImage downloadedImages={downloadedImages} setDownloadedImages={setDownloadedImages} imageData={imageData} setImageData={setImageData} />} />
+            <Route path="/downloads" element={<Downloads downloadedImages={downloadedImages} />} />
+          </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/reset" element={<Reset />} />
           <Route path="/registration" element={<Registration />} />
         </Routes>
       </div>

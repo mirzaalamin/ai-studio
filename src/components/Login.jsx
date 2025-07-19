@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { loginWithEmailAndPassword } from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from "../firebase"
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const navigate = useNavigate()
+    const [user, loading] = useAuthState(auth)
 
-    console.log(error)
+    if (user) navigate("/")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -52,8 +55,10 @@ const Login = () => {
                 </div>
             </div>
             <p className="credit">
-                Don't have an account? <NavLink to="/registration">Register</NavLink>
+                Don't have an account? <NavLink to="/registration">Register</NavLink><br />
+                <span><NavLink to="/reset" className="underline">Forgot your password?</NavLink></span>
             </p>
+
         </>
 
     )

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { registerWithEmailAndPassword } from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from "../firebase"
 
 const Registration = () => {
 
@@ -9,6 +11,9 @@ const Registration = () => {
     const [cPassword, setCPassword] = useState("")
     const [error, setError] = useState("")
     const navigate = useNavigate()
+    const [user, loading] = useAuthState(auth)
+
+    if (user) navigate("/")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
