@@ -10,6 +10,8 @@ import Image5 from '../assets/images/ai-image-5.jpeg'
 import Image6 from '../assets/images/ai-image-6.jpeg'
 import LoadingSkeleton from './LoadingSkeleton'
 import DownloadButton from './DownloadButton'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../firebase'
 
 const CreateImage = ({ downloadedImages, setDownloadedImages, imageData, setImageData }) => {
     const [loading, setLoading] = useState(false)
@@ -20,6 +22,8 @@ const CreateImage = ({ downloadedImages, setDownloadedImages, imageData, setImag
         height: 1024,
         width: 1024
     })
+
+    const [user, isLoading, error] = useAuthState(auth)
 
     const handleGenerateImage = async (e) => {
         e.preventDefault();
@@ -159,42 +163,6 @@ const CreateImage = ({ downloadedImages, setDownloadedImages, imageData, setImag
                             </div>
                         )
                     )}
-
-                    {/* <!-- Image Card 3 --> */}
-                    {/* <div className="image-card rounded-xl overflow-hidden cursor-pointer relative">
-                        <div className="absolute bottom-2 right-2  p-1 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-image-down-icon lucide-image-down"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21" /><path d="m14 19 3 3v-5.5" /><path d="m17 22 3-3" /><circle cx="9" cy="9" r="2" /></svg>
-                        </div>
-                        <img src={Image3} alt="Fantasy landscape with castle"
-                            className="w-full h-48 object-cover" />
-                    </div> */}
-
-                    {/* <!-- Image Card 4 --> */}
-                    {/* <div className="image-card rounded-xl overflow-hidden cursor-pointer relative">
-                        <div className="absolute bottom-2 right-2  p-1 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-image-down-icon lucide-image-down"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21" /><path d="m14 19 3 3v-5.5" /><path d="m17 22 3-3" /><circle cx="9" cy="9" r="2" /></svg>
-                        </div>
-                        <img src={Image4} alt="Colorful anime character"
-                            className="w-full h-48 object-cover" />
-                    </div> */}
-
-                    {/* <!-- Image Card 5 --> */}
-                    {/* <div className="image-card rounded-xl overflow-hidden cursor-pointer relative">
-                        <div className="absolute bottom-2 right-2  p-1 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round" className="lucide lucide-image-down-icon lucide-image-down"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21" /><path d="m14 19 3 3v-5.5" /><path d="m17 22 3-3" /><circle cx="9" cy="9" r="2" /></svg>
-                        </div>
-                        <img src={Image5} alt="Abstract art"
-                            className="w-full h-48 object-cover" />
-                    </div> */}
-
-                    {/* <!-- Image Card 5 --> */}
-                    {/* <div className="image-card rounded-xl overflow-hidden cursor-pointer relative">
-                        <div className="absolute bottom-2 right-2  p-1 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" stroke-linejoin="round" className="lucide lucide-image-down-icon lucide-image-down"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21" /><path d="m14 19 3 3v-5.5" /><path d="m17 22 3-3" /><circle cx="9" cy="9" r="2" /></svg>
-                        </div>
-                        <img src={Image6} alt="Abstract art"
-                            className="w-full h-48 object-cover" />
-                    </div> */}
                 </div>
             </div>
         </main>
